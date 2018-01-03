@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1800.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <ImageView fx:id="imgView1" fitHeight="400.0" fitWidth="550.0" layoutX="34.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imgView2" fitHeight="400.0" fitWidth="550.0" layoutX="34.0" layoutY="450.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imgView4" fitHeight="400.0" fitWidth="550.0" layoutX="625.0" layoutY="450.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imgView6" fitHeight="400.0" fitWidth="550.0" layoutX="1214.0" layoutY="450.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imgView5" fitHeight="400.0" fitWidth="550.0" layoutX="1214.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imgView3" fitHeight="369.0" fitWidth="550.0" layoutX="620.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true" />
+      <JFXButton layoutX="647.0" layoutY="850.0" onMouseClicked="#showNormalImage" prefHeight="31.0" prefWidth="223.0" ripplerFill="#944646" style="-fx-background-color: red;" text="Pokaż bez filtra" textFill="WHITE" />
+      <JFXButton layoutX="916.0" layoutY="850.0" onMouseClicked="#detect" prefHeight="31.0" prefWidth="223.0" ripplerFill="#944646" style="-fx-background-color: red;" text="Nałóż filtr" textFill="WHITE" />
+   </children>
+   <padding>
+      <Insets left="37.0" right="37.0" />
+   </padding>
+</AnchorPane>
