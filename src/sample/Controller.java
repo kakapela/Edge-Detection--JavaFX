@@ -1,10 +1,12 @@
 package sample;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import org.opencv.core.Core;
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
@@ -17,6 +19,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable{
+
     @FXML
     private ImageView imgView1;
 
@@ -86,6 +89,7 @@ decide how to convert the much larger range of possible values (+/- 2billion!) i
     }
     @FXML
     public void detect(){
+
         edgeDetection("obr/samolot19.jpg","obr/edge1.jpg",imgView1);
         edgeDetection("obr/samolot09.jpg","obr/edge2.jpg",imgView2);
         edgeDetection("obr/samolot02.jpg","obr/edge3.jpg",imgView3);
@@ -110,6 +114,10 @@ decide how to convert the much larger range of possible values (+/- 2billion!) i
         Image image = new Image(file.toURI().toString());
 
         imageView.setImage(image);
+    }
+    @FXML
+    public void exit(MouseEvent event) {
+        Platform.exit();
     }
 
 }
