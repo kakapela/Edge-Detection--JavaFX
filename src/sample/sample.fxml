@@ -15,13 +15,14 @@
       <ImageView fx:id="imgView6" fitHeight="400.0" fitWidth="550.0" layoutX="1214.0" layoutY="450.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="imgView5" fitHeight="400.0" fitWidth="550.0" layoutX="1214.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="imgView3" fitHeight="369.0" fitWidth="550.0" layoutX="620.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true" />
-      <JFXButton layoutX="647.0" layoutY="850.0" onMouseClicked="#showNormalImage" prefHeight="31.0" prefWidth="223.0" ripplerFill="#944646" style="-fx-background-color: red;" text="Pokaż bez filtra" textFill="WHITE" />
-      <JFXButton layoutX="916.0" layoutY="850.0" onMouseClicked="#detect" prefHeight="31.0" prefWidth="223.0" ripplerFill="#944646" style="-fx-background-color: red;" text="Nałóż filtr" textFill="WHITE" />
+      <JFXButton layoutX="521.0" layoutY="850.0" onMouseClicked="#showNormalImage" prefHeight="31.0" prefWidth="223.0" ripplerFill="#944646" style="-fx-background-color: red;" text="Pokaż bez filtra" textFill="WHITE" />
+      <JFXButton layoutX="784.0" layoutY="850.0" onMouseClicked="#detect" prefHeight="31.0" prefWidth="223.0" ripplerFill="#944646" style="-fx-background-color: red;" text="Filtr Canny" textFill="WHITE" />
       <Label layoutX="1774.0" onMouseClicked="#exit" prefHeight="43.0" prefWidth="25.0" text="X">
          <font>
             <Font size="29.0" />
          </font>
       </Label>
+      <JFXButton layoutX="1035.0" layoutY="850.0" onMouseClicked="#sobel" prefHeight="31.0" prefWidth="223.0" ripplerFill="#944646" style="-fx-background-color: red;" text="Filtr Sobela" textFill="WHITE" />
    </children>
    <padding>
       <Insets left="37.0" right="37.0" />

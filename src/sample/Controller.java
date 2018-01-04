@@ -6,7 +6,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import org.opencv.core.Core;
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
@@ -65,7 +64,8 @@ public class Controller implements Initializable{
         false: a flag, indicating whether to use a more accurate calculation of the magnitude gradient.
 ABY OBRAZ BYŁ MONOCHROMATYCZNY
         * */
-        Imgproc.Canny(GrayImage,Myimg,50,150,3,false);
+        //Imgproc.Sobel(GrayImage, Myimg, GrayImage.depth(), 2, 2);
+       Imgproc.Canny(GrayImage,Myimg,50,150,3,false);
 
          /*
 CV_8U is unsigned 8bit/pixel - ie a pixel can have values 0-255, this is the normal range for most image and video formats.
@@ -74,8 +74,8 @@ CV_32F is float - the pixel can have any value between 0-1.0, this is useful for
 
 CV_32S is a signed 32bit integer value for each pixel - again useful of you are doing integer maths on the pixels, but again needs converting into 8bits to save or display. This is trickier since you need to
 decide how to convert the much larger range of possible values (+/- 2billion!) into 0-255*/
-
-        Myimg.convertTo(FinalImage, CvType.CV_8U);
+        Imgproc.cvtColor(Myimg,FinalImage,Imgproc.COLOR_GRAY2RGB);
+        //Myimg.convertTo(FinalImage, CvType.CV_8U);
 
         if(Imgcodecs.imwrite(nameOfSavedImage,FinalImage))
             System.out.println("Krawędzie zostały wykryte!");
@@ -90,7 +90,7 @@ decide how to convert the much larger range of possible values (+/- 2billion!) i
     @FXML
     public void detect(){
 
-        edgeDetection("obr/samolot19.jpg","obr/edge1.jpg",imgView1);
+        edgeDetection("obr/samolot01.jpg","obr/edge1.jpg",imgView1);
         edgeDetection("obr/samolot09.jpg","obr/edge2.jpg",imgView2);
         edgeDetection("obr/samolot02.jpg","obr/edge3.jpg",imgView3);
         edgeDetection("obr/samolot11.jpg","obr/edge4.jpg",imgView4);
@@ -100,7 +100,7 @@ decide how to convert the much larger range of possible values (+/- 2billion!) i
     @FXML
     void showNormalImage(MouseEvent event) {
 
-        normalImage("obr/samolot19.jpg",imgView1);
+        normalImage("obr/samolot01.jpg",imgView1);
         normalImage("obr/samolot09.jpg",imgView2);
         normalImage("obr/samolot02.jpg",imgView3);
         normalImage("obr/samolot11.jpg",imgView4);
@@ -114,6 +114,36 @@ decide how to convert the much larger range of possible values (+/- 2billion!) i
         Image image = new Image(file.toURI().toString());
 
         imageView.setImage(image);
+    }
+    @FXML
+    public void sobel(MouseEvent event) {
+        doSobel("obr/samolot01.jpg","obr/edge1.jpg",imgView1);
+        doSobel("obr/samolot09.jpg","obr/edge2.jpg",imgView2);
+        doSobel("obr/samolot02.jpg","obr/edge3.jpg",imgView3);
+        doSobel("obr/samolot11.jpg","obr/edge4.jpg",imgView4);
+        doSobel("obr/samolot12.jpg","obr/edge5.jpg",imgView5);
+        doSobel("obr/samolot10.jpg","obr/edge6.jpg",imgView6);
+
+    }
+    public void doSobel(String nameOfImage,String nameOfSavedImage,ImageView imageView){
+        Mat RGBImage = Imgcodecs.imread(nameOfImage);
+
+        Mat GrayImage = new Mat();
+        Mat Myimg = new Mat();
+        Mat FinalImage = new Mat();
+        Imgproc.cvtColor(RGBImage,GrayImage,Imgproc.COLOR_RGB2GRAY);
+        Imgproc.Sobel(GrayImage, Myimg, GrayImage.depth(), 2, 2);
+        Imgproc.cvtColor(Myimg,FinalImage,Imgproc.COLOR_GRAY2RGB);
+
+
+        if(Imgcodecs.imwrite(nameOfSavedImage,FinalImage))
+            System.out.println("Krawędzie zostały wykryte!");
+
+        File file = new File(nameOfSavedImage);
+        Image image = new Image(file.toURI().toString());
+
+        imageView.setImage(image);
+
     }
     @FXML
     public void exit(MouseEvent event) {
